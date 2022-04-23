@@ -39,6 +39,19 @@ function photographerFactory(data) {
     article.appendChild(photographerPrice);
     return article;
   }
+
+  function getProfileDOM() {
+    const header = document.querySelector('.photograph-header');
+    header.id = 'BORDEL';
+    const essai = document.createElement('h2');
+    essai.textContent = 'ESSAI';
+    const img = document.createElement('img');
+    img.setAttribute('src', picture);
+    img.setAttribute('alt', name);
+    img.setAttribute('width', '150px');
+    header.appendChild(img);
+  }
+
   return {
     name,
     id,
@@ -49,5 +62,6 @@ function photographerFactory(data) {
     portrait,
     picture,
     getUserCardDOM,
+    getProfileDOM,
   };
 }
