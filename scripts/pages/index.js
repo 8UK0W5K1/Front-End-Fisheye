@@ -6,6 +6,7 @@ async function getPhotographers() {
     .then((res) => {
       console.log(res.photographers);
       photographers = res.photographers;
+      media = res.media;
     })
     .catch((error) => console.log(error.message));
   return {
