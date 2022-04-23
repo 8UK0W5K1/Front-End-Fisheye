@@ -25,7 +25,7 @@ function photographerFactory(data) {
     photographerTagline.id = 'tagline';
     photographerPrice.textContent = `${price}€/jour`;
     photographerPrice.id = 'price';
-    photographerUrl.href = './photographers/photographer' + id + '.html';
+    photographerUrl.href = 'photographer.html?id=' + id;
 
     article.appendChild(img);
     article.appendChild(photographerName);

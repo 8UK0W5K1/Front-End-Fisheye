@@ -1,11 +1,13 @@
-const modal = document.getElementById('contact_modal');
-
 function displayModal() {
-  if (modal.style.display === 'none') {
-    modal.style.display = 'block';
-  } else {
-    modal.style.display = 'none';
-  }
+  const modal = document.getElementById('contact_modal');
+  modal.style.display = 'block';
 }
 
-modal.addEventListener('click', displayModal);
+document.getElementById('contact_me').addEventListener('click', displayModal);
+
+function closeModal() {
+  const modal = document.getElementById('contact_modal');
+  modal.style.display = 'none';
+}
+
+document.getElementById('close_modal').addEventListener('click', closeModal);
