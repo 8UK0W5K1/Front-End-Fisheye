@@ -14,8 +14,11 @@ function photographerFactory(data) {
     const photographerPrice = document.createElement('p');
     photographerName.textContent = name;
     photographerLocalisation.textContent = country;
+    photographerLocalisation.id = 'localisation';
     photographerTagline.textContent = tagline;
+    photographerTagline.id = 'tagline';
     photographerPrice.textContent = `${price}€/jour`;
+    photographerPrice.id = 'price';
     article.appendChild(img);
     article.appendChild(photographerName);
     article.appendChild(photographerLocalisation);

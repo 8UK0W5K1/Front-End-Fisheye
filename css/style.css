@@ -40,7 +40,9 @@ h1 {
 
 .photographer_section article h2 {
   color: #d3573c;
+  font-weight: 400;
   font-size: 36px;
+  margin: 20px 0 0 0;
 }
 
 .photographer_section article img {
@@ -48,4 +50,18 @@ h1 {
   width: 200px;
   object-fit: cover;
   border-radius: 100%;
+}
+.photographer_section article #localisation {
+  color: #901c1c;
+  font-size: 13px;
+  margin: 0 0 3px 0;
+}
+.photographer_section article #tagline {
+  font-size: 10px;
+  margin: 0 0 3px 0;
+}
+.photographer_section article #price {
+  font-size: 9px;
+  color: #757575;
+  margin: 3px 0 6px 0;
 }
