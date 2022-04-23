@@ -1,16 +1,29 @@
+const dataPath = './data/photographers.json';
+
 async function getPhotographers() {
-  let dataPath = './data/photographers.json';
   await fetch(dataPath)
     // .then((res) => console.log(res))
     .then((res) => res.json())
     .then((res) => {
-      console.log(res.photographers);
+      // console.log(res.photographers);
       photographers = res.photographers;
-      media = res.media;
     })
     .catch((error) => console.log(error.message));
   return {
     photographers: [...photographers],
+  };
+}
+async function getMedias() {
+  await fetch(dataPath)
+    // .then((res) => console.log(res))
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res.media);
+      medias = res.media;
+    })
+    .catch((error) => console.log(error.message));
+  return {
+    medias: [...medias],
   };
 }
 

@@ -13,6 +13,7 @@ function photographerFactory(data) {
 
     const img = document.createElement('img');
     img.setAttribute('src', picture);
+    img.setAttribute('alt', name);
     const photographerName = document.createElement('h2');
     const photographerLocalisation = document.createElement('p');
     const photographerTagline = document.createElement('p');
