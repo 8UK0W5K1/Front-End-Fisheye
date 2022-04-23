@@ -10,7 +10,6 @@ function photographerFactory(data) {
     article.id = 'photographer-' + id;
 
     const photographerUrl = document.createElement('a');
-    photographerUrl.href = './photographers/photographer' + id + '.html';
 
     const img = document.createElement('img');
     img.setAttribute('src', picture);
@@ -25,13 +24,15 @@ function photographerFactory(data) {
     photographerTagline.id = 'tagline';
     photographerPrice.textContent = `${price}€/jour`;
     photographerPrice.id = 'price';
+    photographerUrl.href = './photographers/photographer' + id + '.html';
+
+    article.appendChild(img);
+    article.appendChild(photographerName);
 
     article.appendChild(photographerUrl);
     photographerUrl.appendChild(img);
     photographerUrl.appendChild(photographerName);
 
-    article.appendChild(img);
-    article.appendChild(photographerName);
     article.appendChild(photographerLocalisation);
     article.appendChild(photographerTagline);
     article.appendChild(photographerPrice);
