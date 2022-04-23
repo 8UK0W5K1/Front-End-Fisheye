@@ -46,11 +46,6 @@ h1 {
 .photographer_section article img {
   height: 200px;
   width: 200px;
-}
-
-#main_index img {
   object-fit: cover;
   border-radius: 100%;
-  height: 200px;
-  width: 200px;
 }

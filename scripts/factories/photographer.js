@@ -8,10 +8,19 @@ function photographerFactory(data) {
     const article = document.createElement('article');
     const img = document.createElement('img');
     img.setAttribute('src', picture);
-    const h2 = document.createElement('h2');
-    h2.textContent = name;
+    const photographerName = document.createElement('h2');
+    const photographerLocalisation = document.createElement('p');
+    const photographerTagline = document.createElement('p');
+    const photographerPrice = document.createElement('p');
+    photographerName.textContent = name;
+    photographerLocalisation.textContent = country;
+    photographerTagline.textContent = tagline;
+    photographerPrice.textContent = `${price}€/jour`;
     article.appendChild(img);
-    article.appendChild(h2);
+    article.appendChild(photographerName);
+    article.appendChild(photographerLocalisation);
+    article.appendChild(photographerTagline);
+    article.appendChild(photographerPrice);
     return article;
   }
   return {
