@@ -63,6 +63,16 @@ function mediasFactory(data) {
 
   getMediasLinks();
 
+  //ceci pourrait m'aider | THX stackoverflow
+  // var abc = 'somelink';
+  // document.getElementById('test').innerHTML = '<a href="' + abc + '">Link</a>';
+
+  //OR
+  // <a href="./posts/<%= post.title %>">Read More</a>
+
+  // A CE MOMENT, JE PENSE QUE JE PEUX GARDER CE QUE J'AI, IL SUFFIRAIT DE RECUPERER ENSUITE DANS L'URL LE TITRE DE L'IMAGE
+  // UN PEU COMME ON L'A FAIT POUR AVOIR L'ID DU PHOTOGRAPHE, ET RESTITUER LA BONNE IMAGE DANS LA LIGHTBOX.... A SUIVRE
+
   const lighbox = document.createElement('div');
   lighbox.classList.add('lightbox');
 
