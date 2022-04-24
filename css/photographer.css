@@ -81,13 +81,15 @@
 }
 
 #photographer_gallery {
+  margin: auto 35px;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
-img .medias {
-  height: 300px;
-  width: 350px;
+.medias {
+  height: 300px !important;
+  width: 350px !important;
   object-fit: cover;
 }
 

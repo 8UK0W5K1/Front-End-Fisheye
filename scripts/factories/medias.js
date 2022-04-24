@@ -17,8 +17,8 @@ function mediasFactory(data) {
       mediaGallery.setAttribute('src', srcMedia);
       mediaGallery.setAttribute('alt', title);
       mediaGallery.classList.add('medias');
-      console.log(srcMedia);
-      console.log(title);
+      // console.log(srcMedia);
+      // console.log(title);
 
       section.appendChild(mediaGallery);
     }

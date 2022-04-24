@@ -31,9 +31,6 @@ async function displayMedias(medias) {
       const mediasData = mediasFactory(media);
       const userGallery = mediasData.getMediasDOM();
       photographerGallery.appendChild(userGallery);
-    } else {
-      photographerGallery.innerText = 'ça marche pas mon truc';
-      console.log(media.image);
     }
   });
 }
