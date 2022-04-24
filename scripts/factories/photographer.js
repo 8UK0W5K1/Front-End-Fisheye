@@ -67,6 +67,9 @@ function photographerFactory(data) {
     img.setAttribute('alt', name);
     img.setAttribute('width', '150px');
     header.appendChild(img);
+
+    const inputName = document.getElementById('inputName');
+    inputName.textContent = name;
   }
 
   return {

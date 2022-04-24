@@ -48,6 +48,7 @@
   margin: 0 0 2px 0;
   color: #525252;
 }
+
 .contact_button {
   font-size: 20px;
   font-weight: bold;
@@ -66,6 +67,19 @@
   background-color: #db8876;
 }
 
+#contact_me {
+  width: 180px !important;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px 5px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;
@@ -81,6 +95,14 @@
 .modal header {
   justify-content: space-between;
   width: 100%;
+}
+
+#inputHeader {
+  display: flex;
+  flex-direction: column;
+  font-size: 36px;
+  margin-bottom: 25px;
+  color: #312e2e;
 }
 
 .modal header img {

@@ -18,13 +18,17 @@
     </header>
     <main id="main_photographer">
       <div class="photograph-header">
-        <button id="contact_me" class="contact_button">Contactez-moi</button>
+        <button id="contact_me">Contactez-moi</button>
       </div>
     </main>
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
+          <div id="inputHeader">
+            <span>Contactez-moi</span>
+            <span id="inputName"></span>
+          </div>
+
           <img
             id="close_modal"
             src="assets/icons/close.svg"
@@ -34,8 +38,14 @@
         </header>
         <form>
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="firstName">Prénom</label>
+            <input type="text" name="" id="firstName" />
+            <label for="firstName">Nom</label>
+            <input type="text" name="" id="lastName" />
+            <label for="firstName">Email</label>
+            <input type="text" name="" id="email" />
+            <label for="firstName">Votre message</label>
+            <input type="text" name="" id="textArea" />
           </div>
           <button class="contact_button">Envoyer</button>
         </form>
