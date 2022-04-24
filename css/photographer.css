@@ -80,6 +80,17 @@
   cursor: pointer;
 }
 
+#photographer_gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img .medias {
+  height: 300px;
+  width: 350px;
+  object-fit: cover;
+}
+
 .modal {
   border-radius: 5px;
   background-color: #db8876;

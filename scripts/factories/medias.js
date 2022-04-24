@@ -13,13 +13,14 @@ function mediasFactory(data) {
     document.body.appendChild(section);
 
     if (image) {
-      const imgGallery = document.createElement('img');
-      imgGallery.setAttribute('src', srcMedia);
-      imgGallery.setAttribute('alt', title);
+      const mediaGallery = document.createElement('img');
+      mediaGallery.setAttribute('src', srcMedia);
+      mediaGallery.setAttribute('alt', title);
+      mediaGallery.classList.add('medias');
       console.log(srcMedia);
       console.log(title);
 
-      section.appendChild(imgGallery);
+      section.appendChild(mediaGallery);
     }
 
     return section;

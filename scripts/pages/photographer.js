@@ -33,6 +33,7 @@ async function displayMedias(medias) {
       photographerGallery.appendChild(userGallery);
     } else {
       photographerGallery.innerText = 'ça marche pas mon truc';
+      console.log(media.image);
     }
   });
 }
