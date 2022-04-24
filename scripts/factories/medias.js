@@ -18,6 +18,9 @@ function mediasFactory(data) {
     mediaTitle.classList.add('media_title');
     mediaTitle.textContent = title;
 
+    const link = document.createElement('a');
+    figure.appendChild(link);
+
     if (image) {
       const media = document.createElement('img');
       media.classList.add('media');
@@ -25,8 +28,12 @@ function mediasFactory(data) {
       media.setAttribute('data-mediaid', id);
       media.setAttribute('alt', title + ', closeup view');
       media.setAttribute('role', 'link');
+      // media.setAttribute('href', `${media.src}`);
+      console.log(media.src);
       media.setAttribute('tabindex', 0);
-      figure.appendChild(media);
+
+      link.appendChild(media);
+      link.setAttribute('href', `${media.src}`);
     } else {
       const video = document.createElement('video');
       video.classList.add('media');
@@ -43,6 +50,13 @@ function mediasFactory(data) {
 
     return figure;
   }
+
+  // function getMediasLinks() {
+  //   const links = Array.from(document.querySelectorAll)
+  // }
+
+  // const lighbox = document.createElement('div');
+  // lighbox.classList.add('lightbox');
 
   return {
     id,
