@@ -37,6 +37,7 @@ function photographerFactory(data) {
     article.appendChild(photographerLocalisation);
     article.appendChild(photographerTagline);
     article.appendChild(photographerPrice);
+
     return article;
   }
 
@@ -70,6 +71,9 @@ function photographerFactory(data) {
 
     const inputName = document.getElementById('inputName');
     inputName.textContent = name;
+
+    const pricePerDay = document.querySelector('.price_per_day');
+    pricePerDay.textContent = price + '€ / jour';
   }
 
   return {

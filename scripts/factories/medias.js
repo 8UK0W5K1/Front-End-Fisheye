@@ -40,6 +40,7 @@ function mediasFactory(data) {
     }
     figure.appendChild(figcaption);
     figcaption.appendChild(mediaTitle);
+
     return figure;
   }
 

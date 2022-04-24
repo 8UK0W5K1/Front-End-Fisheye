@@ -97,8 +97,8 @@ figure {
   margin-inline-end: 1.5em;
 }
 .media {
-  height: 300px;
-  width: 350px;
+  height: 300px !important;
+  width: 350px !important;
   border-radius: 5px;
   object-fit: cover;
   object-position: 50% 30%;
@@ -108,6 +108,41 @@ figure {
 .media_title {
   font-size: 24px;
   color: #901c1c;
+}
+
+/* ==============================
+==============POPUP==========
+================================= */
+
+#popup {
+  position: fixed;
+  bottom: 0px;
+  right: 2%;
+  background-color: #db8876;
+  width: 376px;
+  height: 60px;
+  border-radius: 5px 5px 0 0;
+  font-size: 24px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+}
+
+.price_per_day {
+  justify-content: end;
+}
+
+.popup_text {
+  display: flex;
+  align-items: center;
+  width: 75%;
+  justify-content: space-between;
+  align-items: center;
+  color: #525252;
+}
+.popup_text p {
+  color: black;
 }
 
 /* ==============================
