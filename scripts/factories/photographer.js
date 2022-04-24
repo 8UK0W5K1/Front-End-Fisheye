@@ -42,10 +42,27 @@ function photographerFactory(data) {
 
   function getProfileDOM() {
     const header = document.querySelector('.photograph-header');
-    header.id = 'BORDEL';
-    const essai = document.createElement('h2');
-    essai.textContent = 'ESSAI';
+    const flexCol = document.createElement('div');
+    flexCol.id = 'flexCol';
+    header.prepend(flexCol);
+
+    const photographer_name = document.createElement('h2');
+    flexCol.appendChild(photographer_name);
+    photographer_name.id = 'photographer_name';
+    photographer_name.textContent = name;
+
+    const photographer_location = document.createElement('p');
+    photographer_location.id = 'photographer_location';
+    photographer_location.textContent = city + ', ' + country;
+    flexCol.appendChild(photographer_location);
+
+    const photographer_tagline = document.createElement('p');
+    photographer_tagline.id = 'photographer_tagline';
+    photographer_tagline.textContent = tagline;
+    flexCol.appendChild(photographer_tagline);
+
     const img = document.createElement('img');
+    img.id = 'photographer_image';
     img.setAttribute('src', picture);
     img.setAttribute('alt', name);
     img.setAttribute('width', '150px');
