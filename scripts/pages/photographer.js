@@ -20,9 +20,31 @@ async function displayProfile(photographers) {
       const userProfileDOM = photographersData.getProfileDOM();
       photographerMain.appendChild(userProfileDOM);
     } else {
-      console.log('ou est lerreur bordel !!!');
+      console.log("l'id du photographe ne correspond pas à celle de l'url");
     }
   });
 }
 
 initProfile();
+
+async function sendData() {
+  let contactForm = document.querySelector('#contactForm');
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let inputFirstName = document.querySelector('#firstName').value;
+    let inputLastName = document.querySelector('#lastName').value;
+    let inputEmail = document.querySelector('#email').value;
+    let inputMessage = document.querySelector('#textArea').value;
+    console.log(
+      'Prénom : ' + inputFirstName,
+      ', Nom : ' + inputLastName,
+      ', Email : ' + inputEmail,
+      ', Votre message : ' + inputMessage
+    );
+    console.log('prevent default + close modal + clg');
+    closeModal();
+    history.back;
+  });
+}
+
+sendData();
