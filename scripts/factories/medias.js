@@ -1,17 +1,26 @@
 function mediasFactory(data) {
   const { id, photographerId, title, image, likes, date, price } = data;
 
-  const srcImage = `./assets/images/photographers/${photographerId}/`;
+  let srcMedia = `assets/images/photographers/${photographerId}/`;
+  if (image) {
+    srcMedia += image;
+  } else {
+    // srcMedia += video;
+  }
 
   function getMediasDOM() {
     const section = document.createElement('section');
     document.body.appendChild(section);
 
-    const img = document.createElement('img');
-    img.setAttribute('src', image);
-    img.setAttribute('alt', title);
+    if (image) {
+      const imgGallery = document.createElement('img');
+      imgGallery.setAttribute('src', srcMedia);
+      imgGallery.setAttribute('alt', title);
+      console.log(srcMedia);
+      console.log(title);
 
-    section.appendChild(img);
+      section.appendChild(imgGallery);
+    }
 
     return section;
   }
