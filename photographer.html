@@ -39,16 +39,36 @@
         <form id="contactForm">
           <div>
             <label for="firstName">Prénom</label>
-            <input type="text" name="firstName" id="firstName" />
+            <input
+              type="text"
+              name="firstName"
+              id="firstName"
+              required
+              pattern="[A-Za-z -]{1,32}"
+            />
             <label for="lastName">Nom</label>
-            <input type="text" name="lastName" id="lastName" />
+            <input
+              type="text"
+              name="lastName"
+              id="lastName"
+              required
+              pattern="[A-Za-z -]{1,32}"
+            />
             <label for="email">Email</label>
-            <input type="text" name="email" id="email" />
+            <input
+              type="text"
+              name="email"
+              id="email"
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            />
             <label for="textArea">Votre message</label>
             <textarea
               form="contactForm"
               name="textArea"
               id="textArea"
+              required
+              minlength="2"
             ></textarea>
           </div>
           <button
