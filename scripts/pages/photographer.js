@@ -13,14 +13,14 @@ async function initProfile() {
 }
 
 async function displayProfile(photographers) {
-  const photographerMain = document.getElementById('main_photographer');
+  // const photographerMain = document.getElementById('main_photographer');
+  // const photographerMain = document.querySelector('.photograph-header');
   photographers.forEach((photographer) => {
     if (photographer.id == photographerId) {
       const photographersData = photographerFactory(photographer);
       const userProfileDOM = photographersData.getProfileDOM();
-      photographerMain.appendChild(userProfileDOM);
-    } else {
-      console.log("l'id du photographe ne correspond pas à celle de l'url");
+      // photographerMain.appendChild(userProfileDOM);
+      // console.log(photographerMain);
     }
   });
 }
@@ -47,4 +47,4 @@ async function sendData() {
   });
 }
 
-sendData();
+document.getElementById('submitForm').addEventListener('click', sendData);
