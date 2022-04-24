@@ -41,7 +41,7 @@ async function sendData() {
       ', Email : ' + inputEmail,
       ', Votre message : ' + inputMessage
     );
-    console.log('prevent default + close modal + clg');
+    contactForm.reset();
     closeModal();
     history.back;
   });
