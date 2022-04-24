@@ -6,10 +6,10 @@ const photographerId = getPhotographerId();
 
 async function initProfile() {
   const { photographers } = await getPhotographers();
-  // const { medias } = await getMedias();
+  const { medias } = await getMedias();
 
-  // displayMedia(medias);
   displayProfile(photographers);
+  displayMedias(medias);
 }
 
 async function displayProfile(photographers) {
@@ -21,6 +21,18 @@ async function displayProfile(photographers) {
       const userProfileDOM = photographersData.getProfileDOM();
       // photographerMain.appendChild(userProfileDOM);
       // console.log(photographerMain);
+    }
+  });
+}
+async function displayMedias(medias) {
+  const photographerGallery = document.getElementById('photographer_gallery');
+  medias.forEach((media) => {
+    if (photographerId == media.photographerId) {
+      const mediasData = mediasFactory(media);
+      const userGallery = mediasData.getMediasDOM();
+      photographerGallery.appendChild(userGallery);
+    } else {
+      photographerGallery.innerText = 'ça marche pas mon truc';
     }
   });
 }
