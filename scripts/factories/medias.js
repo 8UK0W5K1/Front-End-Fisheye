@@ -44,6 +44,9 @@ function mediasFactory(data) {
       video.setAttribute('role', 'link');
       video.setAttribute('tabindex', 0);
       figure.appendChild(video);
+
+      link.appendChild(video);
+      link.setAttribute('href', `${video.src}`);
     }
     figure.appendChild(figcaption);
     figcaption.appendChild(mediaTitle);
@@ -51,12 +54,17 @@ function mediasFactory(data) {
     return figure;
   }
 
-  // function getMediasLinks() {
-  //   const links = Array.from(document.querySelectorAll)
-  // }
+  function getMediasLinks() {
+    const links = Array.from(
+      document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
+    );
+    console.log(links);
+  }
 
-  // const lighbox = document.createElement('div');
-  // lighbox.classList.add('lightbox');
+  getMediasLinks();
+
+  const lighbox = document.createElement('div');
+  lighbox.classList.add('lightbox');
 
   return {
     id,
