@@ -9,21 +9,28 @@ function mediasFactory(data) {
   }
 
   function getMediasDOM() {
-    const section = document.createElement('section');
-    document.body.appendChild(section);
+    const figure = document.createElement('figure');
+    figure.setAttribute('aria-label', 'carte du média ' + title);
 
-    if (image) {
-      const mediaGallery = document.createElement('img');
-      mediaGallery.setAttribute('src', srcMedia);
-      mediaGallery.setAttribute('alt', title);
-      mediaGallery.classList.add('medias');
-      // console.log(srcMedia);
-      // console.log(title);
+    const figcaption = document.createElement('figcaption');
 
-      section.appendChild(mediaGallery);
-    }
+    const mediaTitle = document.createElement('span');
+    mediaTitle.classList.add('media_title');
+    mediaTitle.textContent = title;
 
-    return section;
+    /** MEDIAS => vidéo ou image */
+    const media = document.createElement('img');
+    media.classList.add('media');
+    media.setAttribute('src', srcMedia);
+    media.setAttribute('data-mediaid', id);
+    media.setAttribute('alt', title + ', closeup view');
+    media.setAttribute('role', 'link');
+    media.setAttribute('tabindex', 0);
+    figure.appendChild(media);
+
+    figure.appendChild(figcaption);
+    figcaption.appendChild(mediaTitle);
+    return figure;
   }
 
   return {

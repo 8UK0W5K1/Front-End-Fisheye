@@ -81,17 +81,47 @@
 }
 
 #photographer_gallery {
-  margin: auto 35px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2%;
 }
 
 .medias {
   height: 300px !important;
   width: 350px !important;
   object-fit: cover;
+  cursor: pointer;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 5px;
 }
+
+#galeryMedia {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+figure {
+  margin-inline-end: 1.5em;
+}
+.media {
+  height: 300px;
+  width: 350px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.media_title {
+  font-size: 24px;
+  color: #901c1c;
+}
+
+/* ==============================
+==============MODAL==========
+================================= */
 
 .modal {
   border-radius: 5px;
