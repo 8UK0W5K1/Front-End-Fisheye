@@ -29,7 +29,7 @@ function mediasFactory(data) {
       media.setAttribute('data-mediaid', id);
       media.setAttribute('alt', title + ', closeup view');
       media.setAttribute('role', 'link');
-      // media.setAttribute('href', `${media.src}`);
+      media.setAttribute('data-url', `${media.src}`);
 
       // console.log(media.src);
       media.setAttribute('tabindex', 0);
@@ -45,6 +45,7 @@ function mediasFactory(data) {
       video.setAttribute('alt', title + ', closeup view');
       video.setAttribute('role', 'link');
       video.setAttribute('tabindex', 0);
+      video.setAttribute('data-url', `${video.src}`);
       figure.appendChild(video);
 
       links.appendChild(video);
@@ -57,12 +58,29 @@ function mediasFactory(data) {
   }
 
   function getMediasLinks() {
-    const links = Array.from(
-      document.querySelectorAll('a[href$=".jpg"], a[href$=".mp4"]')
-    );
+    const links = Array.from(document.querySelectorAll('.media'));
+    const header = document.querySelector('header');
+    const main = document.querySelector('main');
+    const head = document.querySelector('link');
+
     console.log(links);
+    // A GARDER !! FIX MON PROBLEME DE CREATION DE N x media ARTICLES
+    for (let i = 0; i < links.length; i++) {
+      links[i].onclick = () => {
+        const mediaIndex = links[i].src;
+        displayLightbox((myId = mediaIndex));
+        console.log(links[i].src);
+      };
+    }
 
     function displayLightbox() {
+      const dataLink = document.querySelectorAll('[data-url]');
+      // console.log(dataLink);
+      for (var i = 0; i < dataLink.length; i++) {
+        const item = dataLink[i];
+        console.log(item.src);
+      }
+
       const gallery = document.querySelector('#photographer_gallery');
       const lightbox = document.createElement('div');
       lightbox.classList.add('lightbox');
@@ -70,48 +88,43 @@ function mediasFactory(data) {
 
       const closeImg = document.createElement('img');
       closeImg.setAttribute('src', 'assets/icons/close.svg');
-      closeImg.setAttribute('aria-label', 'Close gallery');
       closeImg.setAttribute('alt', 'close gallery');
+      closeImg.setAttribute('aria-label', 'Close gallery');
       closeImg.classList.add('close_gallery');
 
+      //va chercher l'ID dans l'url
+      function getPhotographerId() {
+        return new URL(location.href).searchParams.get('id');
+      }
+
+      const galleryMedia = document.createElement('img');
+      galleryMedia.setAttribute(
+        'src',
+        `${myId}`
+        // `http://127.0.0.1:5500/Front-End-Fisheye/assets/images/photographers/925/Fashion_Wings.jpg`
+      );
+      galleryMedia.setAttribute('alt', title);
+      console.log('clicked on one media');
+      // console.log(media.src);
+
+      lightbox.style.display = 'block';
       lightbox.appendChild(closeImg);
+      lightbox.appendChild(galleryMedia);
 
       closeImg.addEventListener('click', closeLightbox);
-      // const closeGallery = document.querySelector('#close_gallery');
-      document.querySelector('.close_gallery').addEventListener('click', () => {
-        document.querySelector('.lightbox').style.zIndex = '1';
-      });
     }
 
     function closeLightbox() {
-      const gallery = document.querySelector('#photographer_gallery');
-      const lightbox = document.querySelector('.lightbox');
-      console.log('ou ca bloque ???');
-      gallery.removeChild(lightbox);
+      // const gallery = document.querySelector('#photographer_gallery');
+      const lightboxClose = document.querySelectorAll('.lightbox');
+      // gallery.removeChild(lightbox);
+      lightboxClose.forEach(function (lightbox) {
+        lightbox.style.display = 'none';
+      });
     }
-    // const closeGallery = document.querySelector('.lightbox');
-    // closeGallery.addEventListener('click', closeLightbox);
-
-    // const closeGallery = document.querySelector('#close_gallery');
-    // closeGallery.addEventListener('click', closeLightbox);
-
-    links.forEach((link) => {
-      console.log(link);
-      link.addEventListener('click', displayLightbox);
-    });
   }
 
   getMediasLinks();
-
-  //ceci pourrait m'aider | THX stackoverflow
-  // var abc = 'somelink';
-  // document.getElementById('test').innerHTML = '<a href="' + abc + '">Link</a>';
-
-  //OR
-  // <a href="./posts/<%= post.title %>">Read More</a>
-
-  // A CE MOMENT, JE PENSE QUE JE PEUX GARDER CE QUE J'AI, IL SUFFIRAIT DE RECUPERER ENSUITE DANS L'URL LE TITRE DE L'IMAGE
-  // UN PEU COMME ON L'A FAIT POUR AVOIR L'ID DU PHOTOGRAPHE, ET RESTITUER LA BONNE IMAGE DANS LA LIGHTBOX.... A SUIVRE
 
   return {
     id,
