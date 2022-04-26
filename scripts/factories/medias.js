@@ -70,8 +70,6 @@ function mediasFactory(data) {
       let newIndex = i;
       console.log(links[newIndex].src);
       console.log(links[newIndex].src.nextSibling);
-      console.log('€€€€€€€€€€€€€€€€€€€€€');
-      console.log(links.indexOf(links[i].target));
 
       links[i].onclick = () => {
         const mediaIndex = links[i].src;

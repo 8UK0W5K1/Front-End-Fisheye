@@ -35,7 +35,12 @@ async function displayMedias(medias) {
       mediaArray.push(media);
       console.log('€€€€€€€€€€€€€€€€€€e');
       console.log(mediaArray);
+
+      console.log('€€€€€€€€€€€€€€€€€€€€€');
+      console.log(mediaArray.indexOf(mediaArray));
+
       // TODO reprendre ici demain !!!
+      // mediaArray va me servir pour les sort by
       const mediasData = mediasFactory(media);
       const userGallery = mediasData.getMediasDOM();
       photographerGallery.appendChild(userGallery);
