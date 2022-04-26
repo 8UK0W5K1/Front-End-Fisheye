@@ -64,8 +64,15 @@ function mediasFactory(data) {
     const head = document.querySelector('link');
 
     console.log(links);
+    // tableau.indexOf(e.target);*
     // A GARDER !! FIX MON PROBLEME DE CREATION DE N x media ARTICLES
     for (let i = 0; i < links.length; i++) {
+      let newIndex = i;
+      console.log(links[newIndex].src);
+      console.log(links[newIndex].src.nextSibling);
+      console.log('€€€€€€€€€€€€€€€€€€€€€');
+      console.log(links.indexOf(links[i].target));
+
       links[i].onclick = () => {
         const mediaIndex = links[i].src;
         displayLightbox((myId = mediaIndex));
@@ -115,7 +122,7 @@ function mediasFactory(data) {
     }
 
     function closeLightbox() {
-      // const gallery = document.querySelector('#photographer_gallery');
+      const gallery = document.querySelector('#photographer_gallery');
       const lightboxClose = document.querySelectorAll('.lightbox');
       // gallery.removeChild(lightbox);
       lightboxClose.forEach(function (lightbox) {
