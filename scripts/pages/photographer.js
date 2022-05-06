@@ -8,8 +8,6 @@ async function initProfile() {
   const { photographers } = await getPhotographers();
   const { medias } = await getMedias();
 
-  console.log();
-
   displayProfile(photographers);
   displayMedias(medias);
 }
@@ -29,18 +27,16 @@ async function displayProfile(photographers) {
 async function displayMedias(medias) {
   const photographerGallery = document.getElementById('photographer_gallery');
   let mediaArray = [];
+
   medias.forEach((media) => {
     console.log(media);
     if (photographerId == media.photographerId) {
       mediaArray.push(media);
-      console.log('€€€€€€€€€€€€€€€€€€e');
-      console.log(mediaArray);
 
-      console.log('€€€€€€€€€€€€€€€€€€€€€');
-      console.log(mediaArray.indexOf(mediaArray));
-
-      // TODO reprendre ici demain !!!
       // mediaArray va me servir pour les sort by
+
+      // console.log(media);
+      // console.log(media.length);
       const mediasData = mediasFactory(media);
       const userGallery = mediasData.getMediasDOM();
       photographerGallery.appendChild(userGallery);

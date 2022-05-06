@@ -44,7 +44,6 @@ function mediasFactory(data) {
       video.setAttribute('data-mediaid', id);
       video.setAttribute('alt', title + ', closeup view');
       video.setAttribute('role', 'link');
-      video.setAttribute('tabindex', 0);
       video.setAttribute('data-url', `${video.src}`);
       figure.appendChild(video);
 
@@ -59,31 +58,32 @@ function mediasFactory(data) {
 
   function getMediasLinks() {
     const links = Array.from(document.querySelectorAll('.media'));
+    console.log(links);
     const header = document.querySelector('header');
     const main = document.querySelector('main');
     const head = document.querySelector('link');
 
-    console.log(links);
-    // tableau.indexOf(e.target);*
-    // A GARDER !! FIX MON PROBLEME DE CREATION DE N x media ARTICLES
-    for (let i = 0; i < links.length; i++) {
-      let newIndex = i;
-      console.log(links[newIndex].src);
-      console.log(links[newIndex].src.nextSibling);
+    // ouvrir une lightbox avec toutes les images (array), propriété display, index de l'image ou ID
 
+    console.log(links.length);
+    for (let i = 0; i < links.length; i++) {
+      console.log(links);
+      let newIndex = i;
       links[i].onclick = () => {
+        let clickedMediaIndex = links.indexOf(links[i]);
+        console.log(clickedMediaIndex);
         const mediaIndex = links[i].src;
-        displayLightbox((myId = mediaIndex));
-        console.log(links[i].src);
+        displayLightbox(((myId = links), (currentID = clickedMediaIndex)));
       };
     }
 
     function displayLightbox() {
       const dataLink = document.querySelectorAll('[data-url]');
-      // console.log(dataLink);
-      for (var i = 0; i < dataLink.length; i++) {
+      console.log(dataLink);
+      console.log(dataLink.length);
+      for (var i = 0; i <= dataLink.length; i++) {
         const item = dataLink[i];
-        console.log(item.src);
+        // console.log(item.src);
       }
 
       const gallery = document.querySelector('#photographer_gallery');
@@ -103,18 +103,76 @@ function mediasFactory(data) {
       }
 
       const galleryMedia = document.createElement('img');
-      galleryMedia.setAttribute(
-        'src',
-        `${myId}`
-        // `http://127.0.0.1:5500/Front-End-Fisheye/assets/images/photographers/925/Fashion_Wings.jpg`
-      );
+      const galleryVideo = document.createElement('video');
+
+      console.log(links[`${currentID}`]);
+
+      const currentMedia = links[`${currentID}`].src;
+
+      if (currentMedia.endsWith('.jpg')) {
+        console.log(currentMedia.endsWith('.jpg'));
+        galleryMedia.setAttribute('src', `${myId[`${currentID}`].src}`);
+      } else {
+        console.log(currentMedia.endsWith('.jpg'));
+        console.log(galleryVideo);
+        galleryVideo.setAttribute('src', `${myId[`${currentID}`].src}`);
+        galleryVideo.setAttribute('alt', 'shiiiiiit');
+        galleryVideo.setAttribute('type', 'video/mp4');
+        galleryVideo.setAttribute('autoplay', 'autoplay');
+        // galleryVideo.setAttribute('loop', true);
+      }
+
+      const nextButton = document.createElement('button');
+      nextButton.classList.add('next');
+      const nextIcon = document.createElement('div');
+      nextIcon.innerHTML = `<i
+                      class='fas fa-solid fa-angle-right'
+                      aria-hidden='true'
+                    ></i>`;
+
+      lightbox.appendChild(nextButton);
+      nextButton.appendChild(nextIcon);
+
+      const previousButton = document.createElement('button');
+      previousButton.classList.add('previous');
+      const previousIcon = document.createElement('div');
+      previousIcon.innerHTML = `<i
+                      class='fas fa-solid fa-angle-right'
+                      aria-hidden='true'
+                    ></i>`;
+
+      lightbox.appendChild(previousButton);
+      nextButton.appendChild(previousIcon);
+
+      const nextMedia = document.querySelector('.next');
+      nextMedia.addEventListener('click', () => {
+        dynamicID = currentID;
+        if (dynamicID <= links.length) {
+          dynamicID = currentID += 1;
+          galleryMedia.setAttribute('src', `${myId[dynamicID].src}`);
+          console.log('clikkkkk');
+          console.log(dynamicID);
+          console.log(links.length);
+        }
+      });
+
+      const previousMedia = document.querySelector('.previous');
+      previousMedia.addEventListener('click', () => {
+        dynamicID = currentID;
+        if (dynamicID >= 0) {
+          dynamicID = currentID -= 1;
+          galleryMedia.setAttribute('src', `${myId[dynamicID].src}`);
+          console.log('clikkkkk');
+        }
+      });
+
       galleryMedia.setAttribute('alt', title);
       console.log('clicked on one media');
-      // console.log(media.src);
 
       lightbox.style.display = 'block';
       lightbox.appendChild(closeImg);
       lightbox.appendChild(galleryMedia);
+      lightbox.appendChild(galleryVideo);
 
       closeImg.addEventListener('click', closeLightbox);
     }
@@ -128,6 +186,10 @@ function mediasFactory(data) {
       });
     }
   }
+
+  // liste d'url, index ou current url, filter? incrémenter index, boolean display   => propriétés de ma lightbox
+  // création de modifications de boolean => display
+  // incrémenter ou décrémenter l'index donc l'url de l'image
 
   getMediasLinks();
 
