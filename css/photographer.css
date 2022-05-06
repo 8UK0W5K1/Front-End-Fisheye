@@ -112,9 +112,30 @@ figure {
   cursor: pointer;
 }
 
+figcaption {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .media_title {
   font-size: 24px;
   color: #901c1c;
+  padding-top: auto;
+  flex-grow: 3;
+}
+
+.media_likes {
+  font-size: 18px;
+  color: #901c1c;
+  line-height: 30px;
+  margin-right: 15px;
+}
+.media_likes_icon {
+  font-size: 18px;
+  color: #901c1c;
+  line-height: 30px;
+  align-items: flex-end;
 }
 
 /* ==============================
@@ -176,14 +197,26 @@ figure {
 }
 
 .lightbox > img:not(.close_gallery) {
-  display: flex;
+  /* display: flex;
   margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-  height: auto;
+  height: auto; */
+  display: flex;
+  object-fit: contain;
+  width: 100%;
+  height: calc(90vh - 90px);
+  margin-top: 50px;
+  border-radius: 5px;
 }
 
+.lightbox > video {
+  width: 100%;
+  height: calc(90vh - 90px);
+  border-radius: 5px;
+  margin-top: 50px;
+}
 /* ==============================
 ==============MODAL==========
 ================================= */

@@ -53,26 +53,34 @@ function mediasFactory(data) {
     figure.appendChild(figcaption);
     figcaption.appendChild(mediaTitle);
 
+    const likesNumber = document.createElement('span');
+    likesNumber.classList.add('media_likes');
+    likesNumber.textContent = likes;
+    figcaption.appendChild(likesNumber);
+
+    const likesIcon = document.createElement('i');
+    likesIcon.classList.add(
+      'far',
+      'fa-regular',
+      'fa-heart',
+      'media_likes_icon'
+    );
+    figcaption.appendChild(likesIcon);
+
     return figure;
   }
 
   function getMediasLinks() {
-    const links = Array.from(document.querySelectorAll('.media'));
-    console.log(links);
-    const header = document.querySelector('header');
-    const main = document.querySelector('main');
-    const head = document.querySelector('link');
-
-    // ouvrir une lightbox avec toutes les images (array), propriété display, index de l'image ou ID
+    // const links = Array.from(document.querySelectorAll('.media'));
+    const links = [...document.querySelectorAll('[data-url]')];
+    // console.log(links);
 
     console.log(links.length);
     for (let i = 0; i < links.length; i++) {
       console.log(links);
-      let newIndex = i;
       links[i].onclick = () => {
         let clickedMediaIndex = links.indexOf(links[i]);
-        console.log(clickedMediaIndex);
-        const mediaIndex = links[i].src;
+        // console.log(clickedMediaIndex);
         displayLightbox(((myId = links), (currentID = clickedMediaIndex)));
       };
     }
@@ -110,11 +118,11 @@ function mediasFactory(data) {
       const currentMedia = links[`${currentID}`].src;
 
       if (currentMedia.endsWith('.jpg')) {
-        console.log(currentMedia.endsWith('.jpg'));
+        lightbox.appendChild(galleryMedia);
+        console.log(links[`${currentID}`].src);
         galleryMedia.setAttribute('src', `${myId[`${currentID}`].src}`);
       } else {
-        console.log(currentMedia.endsWith('.jpg'));
-        console.log(galleryVideo);
+        lightbox.appendChild(galleryVideo);
         galleryVideo.setAttribute('src', `${myId[`${currentID}`].src}`);
         galleryVideo.setAttribute('alt', 'shiiiiiit');
         galleryVideo.setAttribute('type', 'video/mp4');
@@ -123,46 +131,46 @@ function mediasFactory(data) {
       }
 
       const nextButton = document.createElement('button');
+      const nextButtonText = document.createTextNode('>');
       nextButton.classList.add('next');
-      const nextIcon = document.createElement('div');
-      nextIcon.innerHTML = `<i
-                      class='fas fa-solid fa-angle-right'
-                      aria-hidden='true'
-                    ></i>`;
+      nextButton.appendChild(nextButtonText);
 
       lightbox.appendChild(nextButton);
-      nextButton.appendChild(nextIcon);
 
       const previousButton = document.createElement('button');
+      const previousButtonText = document.createTextNode('<');
       previousButton.classList.add('previous');
-      const previousIcon = document.createElement('div');
-      previousIcon.innerHTML = `<i
-                      class='fas fa-solid fa-angle-right'
-                      aria-hidden='true'
-                    ></i>`;
+      previousButton.appendChild(previousButtonText);
 
       lightbox.appendChild(previousButton);
-      nextButton.appendChild(previousIcon);
 
       const nextMedia = document.querySelector('.next');
       nextMedia.addEventListener('click', () => {
+        console.log(galleryMedia);
+        console.log(galleryMedia.src.endsWith('.jpg'));
         dynamicID = currentID;
-        if (dynamicID <= links.length) {
-          dynamicID = currentID += 1;
+        dynamicID = currentID += 1;
+        console.log(galleryMedia.src);
+        if (galleryMedia.src.endsWith('.jpg')) {
+          // lightbox.appendChild(gallerymedia);
           galleryMedia.setAttribute('src', `${myId[dynamicID].src}`);
-          console.log('clikkkkk');
-          console.log(dynamicID);
-          console.log(links.length);
+        } else {
+          lightbox.append(galleryVideo);
+          galleryVideo.setAttribute('src', `${myId[dynamicID].src}`);
+          lightbox.removeChild(galleryMedia);
         }
       });
 
       const previousMedia = document.querySelector('.previous');
       previousMedia.addEventListener('click', () => {
         dynamicID = currentID;
-        if (dynamicID >= 0) {
-          dynamicID = currentID -= 1;
+        dynamicID = currentID -= 1;
+        if (galleryMedia.src.endsWith('.jpg')) {
           galleryMedia.setAttribute('src', `${myId[dynamicID].src}`);
-          console.log('clikkkkk');
+        } else {
+          lightbox.removeChild(galleryMedia);
+          lightbox.appendChild(galleryVideo);
+          galleryVideo.setAttribute('src', `${myId[dynamicID].src}`);
         }
       });
 
@@ -171,8 +179,6 @@ function mediasFactory(data) {
 
       lightbox.style.display = 'block';
       lightbox.appendChild(closeImg);
-      lightbox.appendChild(galleryMedia);
-      lightbox.appendChild(galleryVideo);
 
       closeImg.addEventListener('click', closeLightbox);
     }
@@ -182,14 +188,11 @@ function mediasFactory(data) {
       const lightboxClose = document.querySelectorAll('.lightbox');
       // gallery.removeChild(lightbox);
       lightboxClose.forEach(function (lightbox) {
-        lightbox.style.display = 'none';
+        // lightbox.style.display = 'none';
+        gallery.removeChild(lightbox);
       });
     }
   }
-
-  // liste d'url, index ou current url, filter? incrémenter index, boolean display   => propriétés de ma lightbox
-  // création de modifications de boolean => display
-  // incrémenter ou décrémenter l'index donc l'url de l'image
 
   getMediasLinks();
 
