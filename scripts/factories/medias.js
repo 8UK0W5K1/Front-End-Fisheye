@@ -59,12 +59,14 @@ function mediasFactory(data) {
     figcaption.appendChild(likesCount);
 
     const likesIcon = document.createElement('i');
-    likesIcon.classList.add(
-      'far',
-      'fa-regular',
-      'fa-heart',
-      'media_likes_icon'
-    );
+    // likesIcon.classList.add(
+    //   'far',
+    //   'fa-regular',
+    //   'fa-heart',
+    //   'media_likes_icon'
+    // );
+    likesIcon.innerHTML = `<i class="far fa-regular fa-heart media_likes_icon " aria-hidden="true"></i>`;
+
     figcaption.appendChild(likesIcon);
 
     return figure;
@@ -232,28 +234,12 @@ function mediasFactory(data) {
       function evtLike() {
         if (!clicked) {
           clicked = true;
-          likesIcons[
-            i
-          ].innerHTML = `<i class="fas fa-solid fa-heart media_likes_icon"></i>`;
+          likesIcons[i].classList.add('fas', 'fa-solid');
 
           //total de likes sous chaque photo actualisé à chaque clic
           likesCounter[i].innerText = target + 1;
           parseInt(likesTotal);
           console.log(parseInt(likesTotal));
-
-          //   likesTotal.innerHTML =
-          //     1 + sum++ + `<i class="fas fa-solid fa-heart "></i>`;
-          // } else {
-          //   //DISLIKE
-          //   clicked = false;
-          //   likesIcons[i].innerHTML =
-          //     +1 + sum-- + 1`<i class="far fa-regular fa-heart"></i>`;
-
-          //   //total de likes sous chaque photo actualisé à chaque dislike
-          //   likesCounter[i].innerText = 1 + target - 1;
-          //   //total de likes général actualisé sur la page
-          //   likesTotal.innerHTML =
-          //     -1 + sum-- + `<i class="fas fa-solid fa-heart"></i>`;
         }
       }
 
