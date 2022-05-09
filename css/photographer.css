@@ -169,9 +169,14 @@ figcaption {
   align-items: center;
   color: #525252;
 }
-.popup_text p {
+.heart {
   color: black;
 }
+
+/* .likes_total {
+  display: flex;
+  width: 300px;
+} */
 
 /* ==============================
 ==============LIGHTBOX==========

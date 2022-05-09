@@ -29,7 +29,7 @@ async function displayMedias(medias) {
   let mediaArray = [];
 
   medias.forEach((media) => {
-    console.log(media);
+    // console.log(media);
     if (photographerId == media.photographerId) {
       mediaArray.push(media);
 

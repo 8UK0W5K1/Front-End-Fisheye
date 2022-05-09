@@ -53,10 +53,10 @@ function mediasFactory(data) {
     figure.appendChild(figcaption);
     figcaption.appendChild(mediaTitle);
 
-    const likesNumber = document.createElement('span');
-    likesNumber.classList.add('media_likes');
-    likesNumber.textContent = likes;
-    figcaption.appendChild(likesNumber);
+    const likesCount = document.createElement('span');
+    likesCount.classList.add('media_likes');
+    likesCount.textContent = likes;
+    figcaption.appendChild(likesCount);
 
     const likesIcon = document.createElement('i');
     likesIcon.classList.add(
@@ -75,9 +75,9 @@ function mediasFactory(data) {
     const links = [...document.querySelectorAll('[data-url]')];
     // console.log(links);
 
-    console.log(links.length);
+    // console.log(links.length);
     for (let i = 0; i < links.length; i++) {
-      console.log(links);
+      // console.log(links);
       links[i].onclick = () => {
         let clickedMediaIndex = links.indexOf(links[i]);
         // console.log(clickedMediaIndex);
@@ -87,8 +87,8 @@ function mediasFactory(data) {
 
     function displayLightbox() {
       const dataLink = document.querySelectorAll('[data-url]');
-      console.log(dataLink);
-      console.log(dataLink.length);
+      // console.log(dataLink);
+      // console.log(dataLink.length);
       for (var i = 0; i <= dataLink.length; i++) {
         const item = dataLink[i];
         // console.log(item.src);
@@ -113,13 +113,13 @@ function mediasFactory(data) {
       const galleryMedia = document.createElement('img');
       const galleryVideo = document.createElement('video');
 
-      console.log(links[`${currentID}`]);
+      // console.log(links[`${currentID}`]);
 
       const currentMedia = links[`${currentID}`].src;
 
       if (currentMedia.endsWith('.jpg')) {
         lightbox.appendChild(galleryMedia);
-        console.log(links[`${currentID}`].src);
+        // console.log(links[`${currentID}`].src);
         galleryMedia.setAttribute('src', `${myId[`${currentID}`].src}`);
       } else {
         lightbox.appendChild(galleryVideo);
@@ -146,11 +146,11 @@ function mediasFactory(data) {
 
       const nextMedia = document.querySelector('.next');
       nextMedia.addEventListener('click', () => {
-        console.log(galleryMedia);
-        console.log(galleryMedia.src.endsWith('.jpg'));
+        // console.log(galleryMedia);
+        // console.log(galleryMedia.src.endsWith('.jpg'));
         dynamicID = currentID;
         dynamicID = currentID += 1;
-        console.log(galleryMedia.src);
+        // console.log(galleryMedia.src);
         if (galleryMedia.src.endsWith('.jpg')) {
           // lightbox.appendChild(gallerymedia);
           galleryMedia.setAttribute('src', `${myId[dynamicID].src}`);
@@ -175,7 +175,7 @@ function mediasFactory(data) {
       });
 
       galleryMedia.setAttribute('alt', title);
-      console.log('clicked on one media');
+      // console.log('clicked on one media');
 
       lightbox.style.display = 'block';
       lightbox.appendChild(closeImg);
@@ -195,6 +195,76 @@ function mediasFactory(data) {
   }
 
   getMediasLinks();
+
+  let likesCounter = document.querySelectorAll('.media_likes');
+  let likesTotal = document.querySelector('.likes_total');
+
+  let arrayLikes = [];
+  let totalLikes = [];
+  const getLikesNumber = (totalLikes) => {
+    likesCounter.forEach((num) => {
+      let number = 0;
+      number = num.textContent;
+      // console.log(typeof number);
+      number = parseInt(number);
+      // console.log(typeof number);
+      arrayLikes.push(number);
+      console.log(arrayLikes);
+      totalLikes = arrayLikes.reduce((a, b) => a + b);
+      likesTotal.innerHTML = `${totalLikes} <span class="heart">&hearts;</span>`;
+      console.log(likesTotal.textContent);
+    });
+  };
+
+  getLikesNumber();
+
+  const likesIcons = document.querySelectorAll('.media_likes_icon');
+
+  let sum = 0;
+  for (let i = 0; i < likesIcons.length; i++) {
+    // likesCount[i].textContent;
+    likesIcons[i].addEventListener('click', () => {
+      const target = +likesCounter[i].textContent;
+      sum += +likesCounter[i].textContent;
+      likesCounter[i].innerHTML = likesCounter[i].textContent;
+      let clicked = false;
+
+      function evtLike() {
+        if (!clicked) {
+          clicked = true;
+          likesIcons[
+            i
+          ].innerHTML = `<i class="fas fa-solid fa-heart media_likes_icon"></i>`;
+
+          //total de likes sous chaque photo actualisé à chaque clic
+          likesCounter[i].innerText = target + 1;
+          parseInt(likesTotal);
+          console.log(parseInt(likesTotal));
+
+          //   likesTotal.innerHTML =
+          //     1 + sum++ + `<i class="fas fa-solid fa-heart "></i>`;
+          // } else {
+          //   //DISLIKE
+          //   clicked = false;
+          //   likesIcons[i].innerHTML =
+          //     +1 + sum-- + 1`<i class="far fa-regular fa-heart"></i>`;
+
+          //   //total de likes sous chaque photo actualisé à chaque dislike
+          //   likesCounter[i].innerText = 1 + target - 1;
+          //   //total de likes général actualisé sur la page
+          //   likesTotal.innerHTML =
+          //     -1 + sum-- + `<i class="fas fa-solid fa-heart"></i>`;
+        }
+      }
+
+      //EVENEMENT AU CLIC SUR LE BOUTON LIKE
+      likesIcons[i].addEventListener('click', () => {
+        evtLike();
+        arrayLikes.length = 0;
+        getLikesNumber();
+      });
+    });
+  }
 
   return {
     id,
