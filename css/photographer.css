@@ -327,3 +327,7 @@ form input {
   bottom: 50%;
   color: red;
 }
+
+.fa-solid {
+  pointer-events: none;
+}

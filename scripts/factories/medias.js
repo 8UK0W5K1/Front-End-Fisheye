@@ -234,20 +234,27 @@ function mediasFactory(data) {
       function evtLike() {
         if (!clicked) {
           clicked = true;
+
           likesIcons[i].classList.add('fas', 'fa-solid');
 
           //total de likes sous chaque photo actualisé à chaque clic
           likesCounter[i].innerText = target + 1;
-          parseInt(likesTotal);
-          console.log(parseInt(likesTotal));
+          // parseInt(likesTotal);
+          likesIcons[i].attr('disabled', true);
         }
       }
+
+      const disableMultipleClick = () => {
+        let filledHeart = document.querySelectorAll('.fa-solid');
+        filledHeart.forEach((filled) => (filled.disabled = true));
+      };
 
       //EVENEMENT AU CLIC SUR LE BOUTON LIKE
       likesIcons[i].addEventListener('click', () => {
         evtLike();
         arrayLikes.length = 0;
         getLikesNumber();
+        disableMultipleClick();
       });
     });
   }
