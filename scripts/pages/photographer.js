@@ -26,29 +26,21 @@ async function displayMedias(medias) {
 
   let mediaArray = [...medias];
 
-  const choice = window.prompt('Quelle est la réponse ?', '2');
+  const selected = document.querySelector('.selected');
+  const selectBox = document.getElementById('tri');
+  const optionsContainer = document.querySelector('.options-container');
+  const optionsList = document.querySelectorAll('.option');
 
-  switch (choice) {
-    case '1':
-      mediaArray.sort((a, b) => {
-        return b.likes - a.likes;
-      });
-
-      break;
-
-    case '2':
-      mediaArray.sort((a, b) => {
-        return new Date(b.date) - new Date(a.date);
-      });
-      break;
-
-    case '3':
-      mediaArray.sort((a, b) => {
-        return a.title > b.title ? 1 : -1;
-      });
-
-      break;
-  }
+  selectBox.addEventListener('click', () => {
+    optionsContainer.classList.toggle('active');
+    if (optionsContainer.classList.contains('active')) {
+      selectBox.setAttribute('aria-selected', true);
+      // selected.focus();
+    } else {
+      selectBox.setAttribute('aria-selected', false);
+      // selected.focus();
+    }
+  });
 
   mediaArray.forEach((media) => {
     // console.log(media);
@@ -56,7 +48,6 @@ async function displayMedias(medias) {
       // mediaArray.push(media);
 
       // mediaArray va me servir pour les sort by
-      media = media;
       console.log(media);
 
       console.log(media);
@@ -69,8 +60,54 @@ async function displayMedias(medias) {
       photographerGallery.appendChild(userGallery);
     }
   });
-}
 
+  optionsList.forEach((elt) => {
+    function selectOptionDisplay() {
+      selected.innerHTML = elt.querySelector('label').innerHTML;
+      optionsContainer.classList.remove('active');
+      photographerGallery.innerHTML = ''; //ON VIDE LA GALERIE
+      // TRI EN FONCTION DE L'ELEMENT CHOISI (Popularité, Date ou Titre)
+
+      const sortChoice = selected.innerHTML;
+
+      switch (sortChoice) {
+        case 'Popularité':
+          mediaArray.sort((a, b) => {
+            return b.likes - a.likes;
+          });
+
+          break;
+
+        case 'Date':
+          mediaArray.sort((a, b) => {
+            return new Date(b.date) - new Date(a.date);
+          });
+          break;
+
+        case 'Titre':
+          mediaArray.sort((a, b) => {
+            return a.title > b.title ? 1 : -1;
+          });
+
+          break;
+      }
+
+      mediaArray.forEach((media) => {
+        // console.log(media);
+        if (photographerId == media.photographerId) {
+          // console.log(media.length);
+          const mediasData = mediasFactory(media);
+          const userGallery = mediasData.getMediasDOM();
+          photographerGallery.appendChild(userGallery);
+        }
+      });
+    }
+
+    elt.addEventListener('click', () => {
+      selectOptionDisplay();
+    });
+  });
+}
 initProfile();
 
 async function sendData() {
