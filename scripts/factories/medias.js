@@ -1,4 +1,5 @@
 function mediasFactory(data) {
+  console.log(data);
   const { id, photographerId, title, image, video, likes, date, price } = data;
 
   let srcMedia = `assets/images/photographers/${photographerId}/`;
@@ -59,12 +60,6 @@ function mediasFactory(data) {
     figcaption.appendChild(likesCount);
 
     const likesIcon = document.createElement('i');
-    // likesIcon.classList.add(
-    //   'far',
-    //   'fa-regular',
-    //   'fa-heart',
-    //   'media_likes_icon'
-    // );
     likesIcon.innerHTML = `<i class="far fa-regular fa-heart media_likes_icon " aria-hidden="true"></i>`;
 
     figcaption.appendChild(likesIcon);
@@ -220,41 +215,33 @@ function mediasFactory(data) {
 
   getLikesNumber();
 
-  const likesIcons = document.querySelectorAll('.media_likes_icon');
+  const likesIcons = document.querySelectorAll('.fa-regular');
+  // const heartFilledIcons = document.querySelectorAll('.fa-solid');
 
-  let sum = 0;
   for (let i = 0; i < likesIcons.length; i++) {
+    let sum = 0;
+    let clicked = false;
     // likesCount[i].textContent;
     likesIcons[i].addEventListener('click', () => {
       const target = +likesCounter[i].textContent;
       sum += +likesCounter[i].textContent;
       likesCounter[i].innerHTML = likesCounter[i].textContent;
-      let clicked = false;
 
       function evtLike() {
-        if (!clicked) {
-          clicked = true;
-
+        if (!likesIcons[i].classList.contains('fa-solid')) {
           likesIcons[i].classList.add('fas', 'fa-solid');
 
           //total de likes sous chaque photo actualisé à chaque clic
           likesCounter[i].innerText = target + 1;
           // parseInt(likesTotal);
-          likesIcons[i].attr('disabled', true);
         }
       }
-
-      const disableMultipleClick = () => {
-        let filledHeart = document.querySelectorAll('.fa-solid');
-        filledHeart.forEach((filled) => (filled.disabled = true));
-      };
 
       //EVENEMENT AU CLIC SUR LE BOUTON LIKE
       likesIcons[i].addEventListener('click', () => {
         evtLike();
         arrayLikes.length = 0;
         getLikesNumber();
-        disableMultipleClick();
       });
     });
   }

@@ -6,39 +6,66 @@ const photographerId = getPhotographerId();
 
 async function initProfile() {
   const { photographers } = await getPhotographers();
-  const { medias } = await getMedias();
+  console.log(photographers);
 
   displayProfile(photographers);
+  const { medias } = await getMedias();
   displayMedias(medias);
 }
 
 async function displayProfile(photographers) {
-  // const photographerMain = document.getElementById('main_photographer');
-  // const photographerMain = document.querySelector('.photograph-header');
   photographers.forEach((photographer) => {
     if (photographer.id == photographerId) {
       const photographersData = photographerFactory(photographer);
-      const userProfileDOM = photographersData.getProfileDOM();
-      // photographerMain.appendChild(userProfileDOM);
-      // console.log(photographerMain);
+      photographersData.getProfileDOM();
     }
   });
 }
 async function displayMedias(medias) {
   const photographerGallery = document.getElementById('photographer_gallery');
-  let mediaArray = [];
 
-  medias.forEach((media) => {
+  let mediaArray = [...medias];
+
+  const choice = window.prompt('Quelle est la réponse ?', '2');
+
+  switch (choice) {
+    case '1':
+      mediaArray.sort((a, b) => {
+        return b.likes - a.likes;
+      });
+
+      break;
+
+    case '2':
+      mediaArray.sort((a, b) => {
+        return new Date(b.date) - new Date(a.date);
+      });
+      break;
+
+    case '3':
+      mediaArray.sort((a, b) => {
+        return a.title > b.title ? 1 : -1;
+      });
+
+      break;
+  }
+
+  mediaArray.forEach((media) => {
     // console.log(media);
     if (photographerId == media.photographerId) {
-      mediaArray.push(media);
+      // mediaArray.push(media);
 
       // mediaArray va me servir pour les sort by
+      media = media;
+      console.log(media);
 
-      // console.log(media);
+      console.log(media);
+      console.log(mediaArray);
       // console.log(media.length);
       const mediasData = mediasFactory(media);
+
       const userGallery = mediasData.getMediasDOM();
+
       photographerGallery.appendChild(userGallery);
     }
   });
