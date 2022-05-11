@@ -27,7 +27,7 @@ async function displayMedias(medias) {
   let mediaArray = [...medias];
 
   const selected = document.querySelector('.selected');
-  const selectBox = document.getElementById('tri');
+  const selectBox = document.querySelector('.select-box');
   const optionsContainer = document.querySelector('.options-container');
   const optionsList = document.querySelectorAll('.option');
 
@@ -35,10 +35,10 @@ async function displayMedias(medias) {
     optionsContainer.classList.toggle('active');
     if (optionsContainer.classList.contains('active')) {
       selectBox.setAttribute('aria-selected', true);
-      // selected.focus();
+      selected.focus();
     } else {
       selectBox.setAttribute('aria-selected', false);
-      // selected.focus();
+      selected.focus();
     }
   });
 
@@ -64,8 +64,8 @@ async function displayMedias(medias) {
   optionsList.forEach((elt) => {
     function selectOptionDisplay() {
       selected.innerHTML = elt.querySelector('label').innerHTML;
-      optionsContainer.classList.remove('active');
       photographerGallery.innerHTML = ''; //ON VIDE LA GALERIE
+      optionsContainer.classList.remove('active');
       // TRI EN FONCTION DE L'ELEMENT CHOISI (Popularité, Date ou Titre)
 
       const sortChoice = selected.innerHTML;
