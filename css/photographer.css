@@ -193,6 +193,7 @@ figcaption {
   background-color: grey; /* only for debug */
   transition: opacity 0.3s;
   z-index: 99;
+  display: none;
 }
 
 .lightbox .close_gallery {

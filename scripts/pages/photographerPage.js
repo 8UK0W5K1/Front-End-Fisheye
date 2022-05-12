@@ -1,3 +1,5 @@
+import mediasFactory from './../factories/medias.js';
+
 //va chercher l'ID dans l'url
 function getPhotographerId() {
   return new URL(location.href).searchParams.get('id');
@@ -55,7 +57,7 @@ async function displayMedias(medias) {
       // console.log(media.length);
       const mediasData = mediasFactory(media);
 
-      const userGallery = mediasData.getMediasDOM();
+      const userGallery = mediasData.setMediaDOM();
 
       photographerGallery.appendChild(userGallery);
     }
@@ -97,7 +99,7 @@ async function displayMedias(medias) {
         if (photographerId == media.photographerId) {
           // console.log(media.length);
           const mediasData = mediasFactory(media);
-          const userGallery = mediasData.getMediasDOM();
+          const userGallery = mediasData.setMediaDOM();
           photographerGallery.appendChild(userGallery);
         }
       });
