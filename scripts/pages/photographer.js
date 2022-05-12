@@ -6,7 +6,7 @@ const photographerId = getPhotographerId();
 
 async function initProfile() {
   const { photographers } = await getPhotographers();
-  console.log(photographers);
+  // console.log(photographers);
 
   displayProfile(photographers);
   const { medias } = await getMedias();
@@ -48,10 +48,10 @@ async function displayMedias(medias) {
       // mediaArray.push(media);
 
       // mediaArray va me servir pour les sort by
-      console.log(media);
+      // console.log(media);
 
-      console.log(media);
-      console.log(mediaArray);
+      // console.log(media);
+      // console.log(mediaArray);
       // console.log(media.length);
       const mediasData = mediasFactory(media);
 

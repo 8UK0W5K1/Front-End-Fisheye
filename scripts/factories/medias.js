@@ -1,5 +1,5 @@
 function mediasFactory(data) {
-  console.log(data);
+  // console.log(data);
   const { id, photographerId, title, image, video, likes, date, price } = data;
 
   let srcMedia = `assets/images/photographers/${photographerId}/`;
@@ -121,7 +121,7 @@ function mediasFactory(data) {
       } else {
         lightbox.appendChild(galleryVideo);
         galleryVideo.setAttribute('src', `${myId[`${currentID}`].src}`);
-        galleryVideo.setAttribute('alt', 'shiiiiiit');
+        galleryVideo.setAttribute('alt', title);
         galleryVideo.setAttribute('type', 'video/mp4');
         galleryVideo.setAttribute('autoplay', 'autoplay');
         // galleryVideo.setAttribute('loop', true);
@@ -141,33 +141,48 @@ function mediasFactory(data) {
 
       lightbox.appendChild(previousButton);
 
+      dynamicID = currentID;
       const nextMedia = document.querySelector('.next');
+
       nextMedia.addEventListener('click', () => {
-        // console.log(galleryMedia);
-        // console.log(galleryMedia.src.endsWith('.jpg'));
-        dynamicID = currentID;
-        dynamicID = currentID += 1;
-        // console.log(galleryMedia.src);
-        if (galleryMedia.src.endsWith('.jpg')) {
-          // lightbox.appendChild(gallerymedia);
+        // console.log(myId.length);
+        if (dynamicID <= myId.length && image) {
+          console.log('IF nextmedia');
+          dynamicID++;
+          console.log(dynamicID);
+          console.log(myId);
+          lightbox.removeAttribute(galleryVideo);
           galleryMedia.setAttribute('src', `${myId[dynamicID].src}`);
-        } else {
-          lightbox.append(galleryVideo);
+        } else if (dynamicID <= myId.length && video) {
+          console.log('ELSE IF nextmedia');
+          dynamicID--;
+          dynamicID = currentID || 0;
+          console.log(myId);
+          lightbox.removeAttribute(galleryMedia);
           galleryVideo.setAttribute('src', `${myId[dynamicID].src}`);
-          lightbox.removeChild(galleryMedia);
+        } else {
+          console.log('ELSE nextmedia...');
+          dynamicID = 0;
         }
       });
-
       const previousMedia = document.querySelector('.previous');
       previousMedia.addEventListener('click', () => {
-        dynamicID = currentID;
-        dynamicID = currentID -= 1;
-        if (galleryMedia.src.endsWith('.jpg')) {
+        // console.log(myId.length);
+        if (dynamicID >= 0 && image) {
+          console.log('yo IF previousmedia');
+          dynamicID--;
+          // console.log(dynamicID);
+          // console.log(myId);
           galleryMedia.setAttribute('src', `${myId[dynamicID].src}`);
-        } else {
-          lightbox.removeChild(galleryMedia);
-          lightbox.appendChild(galleryVideo);
+        } else if (dynamicID > -1 && video) {
+          console.log('else if previousmedia!');
+          dynamicID--;
+          dynamicID = currentID || 0;
+          // console.log(myId);
           galleryVideo.setAttribute('src', `${myId[dynamicID].src}`);
+        } else {
+          dynamicID = myId.length - 1;
+          console.log('nope... ELSE previous media!');
         }
       });
 
@@ -206,10 +221,10 @@ function mediasFactory(data) {
       number = parseInt(number);
       // console.log(typeof number);
       arrayLikes.push(number);
-      console.log(arrayLikes);
+      // console.log(arrayLikes);
       totalLikes = arrayLikes.reduce((a, b) => a + b);
       likesTotal.innerHTML = `${totalLikes} <span class="heart">&hearts;</span>`;
-      console.log(likesTotal.textContent);
+      // console.log(likesTotal.textContent);
     });
   };
 
