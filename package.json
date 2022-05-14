@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
     "lint": "eslint ."
   },
   "repository": {
@@ -19,6 +20,8 @@
   "homepage": "https://github.com/8UK0W5K1/Front-End-Fisheye#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint": "^8.14.0"
+    "eslint": "^8.14.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
   }
 }

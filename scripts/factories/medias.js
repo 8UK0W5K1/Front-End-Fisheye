@@ -1,5 +1,4 @@
-import lightboxFactory from './lightbox.js';
-lightboxFactory.init();
+import Lightbox from './lightbox.js';
 
 export default function mediasFactory(data) {
   // console.log(data);
@@ -8,8 +7,10 @@ export default function mediasFactory(data) {
   let srcMedia = `assets/images/photographers/${photographerId}/`;
   if (image) {
     srcMedia += image;
-  } else {
+  } else if (video) {
     srcMedia += video;
+  } else {
+    console.log('ay oun problema !!!');
   }
 
   function setMediaDOM() {
@@ -81,10 +82,7 @@ export default function mediasFactory(data) {
     };
 
     getLikesNumber();
-
     const likesIcons = document.querySelectorAll('.fa-regular');
-    // const heartFilledIcons = document.querySelectorAll('.fa-solid');
-
     for (let i = 0; i < likesIcons.length; i++) {
       let sum = 0;
       let clicked = false;

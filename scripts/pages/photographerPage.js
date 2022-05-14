@@ -1,3 +1,4 @@
+import Lightbox from '../factories/lightbox.js';
 import mediasFactory from './../factories/medias.js';
 
 //va chercher l'ID dans l'url
@@ -13,6 +14,7 @@ async function initProfile() {
   displayProfile(photographers);
   const { medias } = await getMedias();
   displayMedias(medias);
+  Lightbox.init();
 }
 
 async function displayProfile(photographers) {
@@ -47,14 +49,6 @@ async function displayMedias(medias) {
   mediaArray.forEach((media) => {
     // console.log(media);
     if (photographerId == media.photographerId) {
-      // mediaArray.push(media);
-
-      // mediaArray va me servir pour les sort by
-      // console.log(media);
-
-      // console.log(media);
-      // console.log(mediaArray);
-      // console.log(media.length);
       const mediasData = mediasFactory(media);
 
       const userGallery = mediasData.setMediaDOM();
@@ -101,6 +95,7 @@ async function displayMedias(medias) {
           const mediasData = mediasFactory(media);
           const userGallery = mediasData.setMediaDOM();
           photographerGallery.appendChild(userGallery);
+          Lightbox.init();
         }
       });
     }

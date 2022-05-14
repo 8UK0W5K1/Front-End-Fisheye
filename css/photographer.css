@@ -223,6 +223,136 @@ figcaption {
   border-radius: 5px;
   margin-top: 50px;
 }
+
+.bground {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: -50px;
+  background-color: rgba(211, 87, 60, 0.5);
+  z-index: -1;
+}
+.wrapper {
+  display: block;
+}
+.wrapper-content {
+  z-index: 999;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100vw;
+  height: calc(100vh - 90px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: (transparent, 0.6);
+  border-radius: 3px;
+}
+
+.wrapper-content button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+p {
+  font-size: 24px;
+  color: #fff;
+  line-height: 40px;
+}
+.wrapper-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100%;
+}
+
+.wrapper-left .previous {
+  width: 60px;
+  height: 60px;
+  font-size: 48px;
+  color: #fff;
+}
+
+.wrapper-right {
+  flex-direction: column-reverse;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  height: 50%;
+}
+
+.wrapper-right .next {
+  width: 60px;
+  height: 60px;
+}
+
+.next i {
+  font-size: 48px;
+  color: #fff;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  margin-top: 15px;
+  width: 5%;
+  color: #901c1c;
+}
+
+svg path {
+  fill: #fff;
+}
+
+.lightbox_container {
+  background-color: (transparent, 0.6);
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 100%;
+}
+.lightbox_container div {
+  background-color: (transparent, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+.lightbox_container div img {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: calc(90vh - 90px);
+  margin-top: 10px;
+  border-radius: 5px;
+}
+div img:focus {
+  border: 2px solid #fff;
+}
+
+video {
+  width: 100%;
+  height: calc(90vh - 90px);
+  border-radius: 5px;
+}
+video:focus {
+  border: 2px solid #fff;
+}
+
+video:focus p {
+  margin: auto;
+  margin-top: 20px;
+}
+video:focus p:focus {
+  border: 2px solid #fff;
+}
+
+.hidden {
+  display: none;
+}
 /* ==============================
 ==============MODAL==========
 ================================= */
