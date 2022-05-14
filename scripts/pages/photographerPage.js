@@ -1,4 +1,5 @@
 import Lightbox from '../factories/lightbox.js';
+import { likes } from '../utils/likes.js';
 import mediasFactory from './../factories/medias.js';
 
 //va chercher l'ID dans l'url
@@ -15,6 +16,7 @@ async function initProfile() {
   const { medias } = await getMedias();
   displayMedias(medias);
   Lightbox.init();
+  likes();
 }
 
 async function displayProfile(photographers) {

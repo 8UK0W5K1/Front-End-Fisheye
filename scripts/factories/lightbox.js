@@ -7,7 +7,7 @@ export default class Lightbox {
     console.log(links);
     const tabLinks = links.map((media) => media.getAttribute('src'));
     const titles = Array.from(document.querySelectorAll('.media_title'));
-    console.log(titles);
+    // console.log(titles);
     const title = titles.map((elt) => elt.innerText);
     console.log(title);
 
@@ -102,10 +102,10 @@ export default class Lightbox {
   }
 
   close() {
-    setTimeout(() => {
-      this.body.firstChild.remove();
-    }, 200);
-    this.links[this.currentMediaPosition].focus();
+    // setTimeout(() => {
+    this.body.firstChild.remove();
+    // }, 200);
+    // this.links[this.currentMediaPosition].focus();
   }
 
   next() {
@@ -114,7 +114,7 @@ export default class Lightbox {
     if (this.currentMediaPosition < this.links.length - 1) {
       this.currentMediaPosition++;
       this.currentMediaTitle++;
-      console.log(this.currentMediaTitle);
+      // console.log(this.currentMediaTitle);
       this.linkUrl = this.tabLinks[this.currentMediaPosition];
       this.titlePos = this.title[this.currentMediaTitle];
 
