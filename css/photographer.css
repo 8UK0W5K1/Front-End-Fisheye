@@ -12,14 +12,16 @@
 #flexCol {
   display: flex;
   flex-direction: column;
+  width: 30%;
 }
 
 #photographer_name {
   color: #d3573c;
   font-weight: 400;
-  font-size: 36px;
+  font-size: 64px;
   margin: 20px 0 0 0;
-  max-width: 200px;
+  /* max-width: 200px; */
+  line-height: 83.33px;
 }
 
 #photographer_image {
@@ -37,10 +39,12 @@
   font-size: 24px;
   margin: 0 0 19px 0;
   color: #901c1c;
+  line-height: 31.25px;
 }
 
 #photographer_tagline {
-  font-size: 13px;
+  font-size: 18px;
+  line-height: 23.44px;
   margin: 0 0 2px 0;
   color: #525252;
 }
@@ -63,6 +67,10 @@
   background-color: #db8876;
 } */
 
+#contactButton {
+  width: 30%;
+}
+
 #contact_me {
   width: 170px !important;
   font-size: 18px;
@@ -74,6 +82,7 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  justify-content: center;
 }
 #contact_me:hover,
 #contact_me:focus {
@@ -84,11 +93,12 @@
 #photographer_gallery {
   width: 90%;
   margin: auto;
+  margin-bottom: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  /* gap: 2%; */
+  justify-content: space-around;
+  gap: 2%;
 }
 
 .medias {
@@ -122,7 +132,13 @@ figcaption {
   font-size: 24px;
   color: #901c1c;
   padding-top: auto;
-  flex-grow: 3;
+  /* flex-grow: 3; */
+  font-size: 24px;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 44px;
 }
 
 .media_likes {
@@ -226,10 +242,12 @@ figcaption {
 
 .bground {
   width: 100vw;
-  height: 100vh;
+  /* height: calc(100vh+50px); */
+  height: 110vh;
   position: fixed;
   top: -50px;
-  background-color: rgba(211, 87, 60, 0.5);
+  /* background-color: rgba(211, 87, 60, 0.5); */
+  background-color: #fff;
   z-index: -1;
 }
 .wrapper {
@@ -274,7 +292,7 @@ p {
   width: 60px;
   height: 60px;
   font-size: 48px;
-  color: #fff;
+  color: #901c1c;
 }
 
 .wrapper-right {
@@ -289,24 +307,31 @@ p {
 .wrapper-right .next {
   width: 60px;
   height: 60px;
+  color: #901c1c;
 }
 
 .next i {
   font-size: 48px;
-  color: #fff;
+  color: #901c1c;
+}
+
+.modalLightbox {
+  color: #901c1c;
+  justify-content: center;
+  margin: auto;
 }
 
 .close-lightbox {
   position: absolute;
-  top: 25px;
-  right: 25px;
-  margin-top: 15px;
-  width: 5%;
+  top: 15px;
+  right: 15px;
+  width: 42px;
+  height: 42px;
   color: #901c1c;
 }
 
 svg path {
-  fill: #fff;
+  fill: #901c1c;
 }
 
 .lightbox_container {
