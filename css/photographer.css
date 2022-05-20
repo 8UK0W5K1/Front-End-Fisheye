@@ -112,6 +112,7 @@
 
 figure {
   margin-inline-end: 1.5em;
+  width: 100%e;
 }
 .media {
   height: 300px !important;
@@ -123,7 +124,7 @@ figure {
 }
 
 figcaption {
-  width: 100%;
+  width: 350px;
   display: flex;
   justify-content: space-between;
 }
@@ -134,7 +135,7 @@ figcaption {
   padding-top: auto;
   /* flex-grow: 3; */
   font-size: 24px;
-  width: 80%;
+  width: 70%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -146,12 +147,15 @@ figcaption {
   color: #901c1c;
   line-height: 30px;
   margin-right: 15px;
+  justify-content: flex-end;
+  margin-right: -25px;
 }
 .media_likes_icon {
   font-size: 18px;
   color: #901c1c;
   line-height: 30px;
   align-items: flex-end;
+  justify-content: flex-end;
 }
 
 /* ==============================
@@ -417,7 +421,7 @@ video:focus p:focus {
 #inputHeader {
   display: flex;
   flex-direction: column;
-  font-size: 36px;
+  font-size: 45px;
   margin-bottom: 25px;
   color: #312e2e;
 }
@@ -430,6 +434,10 @@ video:focus p:focus {
   font-size: 64px;
   font-weight: normal;
   text-align: center;
+}
+
+#contactForm {
+  margin-top: 20px;
 }
 
 form {
