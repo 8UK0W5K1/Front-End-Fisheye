@@ -98,6 +98,7 @@ async function displayMedias(medias) {
           const userGallery = mediasData.setMediaDOM();
           photographerGallery.appendChild(userGallery);
           Lightbox.init();
+          likes();
         }
       });
     }
