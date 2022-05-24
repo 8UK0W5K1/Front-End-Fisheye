@@ -42,6 +42,22 @@ export default class Lightbox {
         const next = document.querySelector('.next');
         next.focus();
       };
+      link.onkeydown = (e) => {
+        if (e.key === 'Enter') {
+          const light = new Lightbox(
+            linkUrl,
+            tabLinks,
+            link,
+            title,
+            titlePos,
+            currentMediaPosition,
+            currentMediaTitle
+          );
+          light.preview();
+          const next = document.querySelector('.next');
+          next.focus();
+        }
+      };
     }
   }
 

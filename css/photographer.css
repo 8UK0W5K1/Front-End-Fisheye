@@ -61,11 +61,11 @@
   border-radius: 5px;
   cursor: pointer;
 }
-/* .contact_button:hover,
+.contact_button:hover,
 .contact_button:focus {
   color: black;
   background-color: #db8876;
-} */
+}
 
 #contactButton {
   width: 30%;
@@ -417,6 +417,11 @@ video:focus p:focus {
   justify-content: space-between;
   width: 100%;
 }
+
+/* #close_modal:focus {
+  color: black;
+  background-color: #db8876;
+} */
 
 #inputHeader {
   display: flex;

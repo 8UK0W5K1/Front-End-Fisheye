@@ -1,4 +1,4 @@
-export function likes() {
+export default function likes() {
   let likesCounter = document.querySelectorAll('.media_likes');
   let likesTotal = document.querySelector('.likes_total');
 

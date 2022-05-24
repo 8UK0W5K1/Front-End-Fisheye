@@ -1,5 +1,5 @@
 import Lightbox from '../factories/lightbox.js';
-import { likes } from '../utils/likes.js';
+import likes from '../utils/likes.js';
 import mediasFactory from './../factories/medias.js';
 
 //va chercher l'ID dans l'url
@@ -40,6 +40,17 @@ async function displayMedias(medias) {
   selectBox.addEventListener('click', () => {
     optionsContainer.classList.toggle('active');
     if (optionsContainer.classList.contains('active')) {
+      selectBox.setAttribute('aria-selected', true);
+      selected.focus();
+    } else {
+      selectBox.setAttribute('aria-selected', false);
+      selected.focus();
+    }
+  });
+
+  selectBox.addEventListener('keydown', (e) => {
+    optionsContainer.classList.toggle('active');
+    if (e.key == 'Enter') {
       selectBox.setAttribute('aria-selected', true);
       selected.focus();
     } else {
@@ -105,6 +116,11 @@ async function displayMedias(medias) {
 
     elt.addEventListener('click', () => {
       selectOptionDisplay();
+    });
+    elt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        selectOptionDisplay();
+      }
     });
   });
 }
