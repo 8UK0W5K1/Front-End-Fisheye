@@ -4,21 +4,21 @@ import { Lightboxvideo } from './lightboxVideo.js';
 export default class Lightbox {
   static init() {
     const links = Array.from(document.querySelectorAll('.media'));
-    console.log(links);
+    // console.log(links);
     const tabLinks = links.map((media) => media.getAttribute('src'));
     const titles = Array.from(document.querySelectorAll('.media_title'));
     // console.log(titles);
     const title = titles.map((elt) => elt.innerText);
-    console.log(title);
+    // console.log(title);
 
-    console.log(links);
+    // console.log(links);
     for (let i = 0; i < links.length; i++) {
       const link = links[i]; //this.link
-      console.log(link);
+      // console.log(link);
       let titlePos = links[i].getAttribute('alt').split(',')[0];
-      console.log(titlePos); //this.titlePos
+      // console.log(titlePos); //this.titlePos
       const linkUrl = link.getAttribute('src'); //this.linkUrl
-      console.log(linkUrl);
+      // console.log(linkUrl);
       const currentMediaPosition = tabLinks.findIndex(
         //this.currentPosition
         (link) => link == linkUrl

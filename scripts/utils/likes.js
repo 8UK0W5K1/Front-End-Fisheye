@@ -2,7 +2,7 @@ export default function likes() {
   let likesCounter = document.querySelectorAll('.media_likes');
   let likesTotal = document.querySelector('.likes_total');
 
-  console.log(likesTotal.innerHTML);
+  // console.log(likesTotal.innerHTML);
   let arrayLikes = [];
   let totalLikes = [];
   const getLikesNumber = (totalLikes) => {
@@ -13,7 +13,7 @@ export default function likes() {
       number = parseInt(number);
       // console.log(typeof number);
       arrayLikes.push(number);
-      console.log(arrayLikes);
+      // console.log(arrayLikes);
       totalLikes = arrayLikes.reduce((a, b) => a + b);
       likesTotal.innerHTML = `${totalLikes} <span class="heart">&hearts;</span>`;
       // console.log(likesTotal.textContent);
