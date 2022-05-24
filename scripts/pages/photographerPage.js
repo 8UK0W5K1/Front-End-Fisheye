@@ -49,13 +49,18 @@ async function displayMedias(medias) {
   });
 
   selectBox.addEventListener('keydown', (e) => {
-    optionsContainer.classList.toggle('active');
     if (e.key == 'Enter') {
+      optionsContainer.classList.toggle('active');
       selectBox.setAttribute('aria-selected', true);
+      optionsList.forEach((option) => (option.tabIndex = 2));
+
       selected.focus();
-    } else {
-      selectBox.setAttribute('aria-selected', false);
-      selected.focus();
+    } else if (e.keyCode == '39') {
+      selectBox.setAttribute('aria-selected', true);
+      optionsList.forEach((option) => {
+        option.tabIndex = 2;
+        option.focus();
+      });
     }
   });
 
