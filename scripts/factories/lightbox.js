@@ -80,11 +80,11 @@ export default class Lightbox {
     const focusablesLightbox = Array.from(
       document.querySelectorAll('.modalLightbox')
     );
-    console.log(focusablesLightbox);
+    // console.log(focusablesLightbox);
     let index = focusablesLightbox.findIndex(
       (elt) => elt === wrapper.querySelector(':focus')
     );
-    console.log(index);
+    // console.log(index);
 
     if (e.shiftKey === true) {
       index--;
