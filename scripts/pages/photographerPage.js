@@ -58,7 +58,7 @@ async function displayMedias(medias) {
     } else if (e.keyCode == '39') {
       selectBox.setAttribute('aria-selected', true);
       optionsList.forEach((option) => {
-        option.tabIndex = 2;
+        option.tabIndex = 1;
         option.focus();
       });
     }
