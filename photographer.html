@@ -47,19 +47,26 @@
           <hr />
           <div tabindex="1" class="option">
             <input type="radio" class="radio" name="category" id="titre" />
-            <label for="titre" class="optionsDropdown">Titre</label>
+            <label for="titre" aria-label="Titre" class="optionsDropdown"
+              >Titre</label
+            >
           </div>
           <hr />
           <div tabindex="1" class="option">
             <input type="radio" class="radio" name="category" id="popularite" />
-            <label for="popularite" class="optionsDropdown">Popularité</label>
+            <label
+              for="popularite"
+              aria-label="Popularité"
+              class="optionsDropdown"
+              >Popularité</label
+            >
           </div>
         </div>
         <div tabindex="0" class="selected optionsDropdown">Trier par</div>
       </span>
     </nav>
-    <section id="photographer_gallery"></section>
-    <section id="popup">
+    <section tabIndex="0" id="photographer_gallery"></section>
+    <section tabindex="0" id="popup">
       <div class="popup_text">
         <span class="likes_total"></span>
         <span class="price_per_day"></span>

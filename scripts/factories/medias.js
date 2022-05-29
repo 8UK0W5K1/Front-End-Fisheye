@@ -15,7 +15,6 @@ export default function mediasFactory(data) {
 
   function setMediaDOM() {
     const figure = document.createElement('figure');
-    figure.setAttribute('aria-label', 'carte du média ' + title);
 
     const figcaption = document.createElement('figcaption');
 
@@ -28,8 +27,10 @@ export default function mediasFactory(data) {
       photo.classList.add('media');
       photo.setAttribute('src', srcMedia);
       photo.setAttribute('data-mediaid', id);
+      photo.setAttribute('aria-label', title);
       photo.setAttribute('alt', title + ', closeup view');
       photo.setAttribute('role', 'link');
+      photo.setAttribute('tabIndex', 0);
       photo.setAttribute('data-url', `${photo.src}`);
       figure.appendChild(photo);
       // media.setAttribute('tabindex', 0);
@@ -39,6 +40,7 @@ export default function mediasFactory(data) {
       video.setAttribute('type', 'video/mp4');
       video.setAttribute('src', srcMedia);
       video.setAttribute('data-mediaid', id);
+      photo.setAttribute('tabIndex', 0);
       video.setAttribute('alt', title + ', closeup view');
       video.setAttribute('role', 'link');
       video.setAttribute('data-url', `${video.src}`);
