@@ -32,7 +32,14 @@
     </main>
     <nav>
       <label for="tri">Trier par</label>
-      <div id="tri" name="tri" aria-label="tri des medias" class="select-box">
+      <span
+        id="tri"
+        name="tri"
+        aria-label="tri des medias"
+        role="checkbox"
+        aria-checked="false"
+        class="select-box"
+      >
         <div class="options-container">
           <hr />
           <div tabindex="1" class="option">
@@ -51,7 +58,7 @@
           </div>
         </div>
         <div tabindex="0" class="selected optionsDropdown">Trier par</div>
-      </div>
+      </span>
     </nav>
     <section id="photographer_gallery"></section>
     <section id="popup">
