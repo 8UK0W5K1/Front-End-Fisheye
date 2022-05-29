@@ -40,7 +40,7 @@ export default function mediasFactory(data) {
       video.setAttribute('type', 'video/mp4');
       video.setAttribute('src', srcMedia);
       video.setAttribute('data-mediaid', id);
-      photo.setAttribute('tabIndex', 0);
+      video.setAttribute('tabIndex', 0);
       video.setAttribute('alt', title + ', closeup view');
       video.setAttribute('role', 'link');
       video.setAttribute('data-url', `${video.src}`);
