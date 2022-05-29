@@ -30,7 +30,7 @@ export default function mediasFactory(data) {
       photo.setAttribute('aria-label', title);
       photo.setAttribute('alt', title + ', closeup view');
       photo.setAttribute('role', 'link');
-      photo.setAttribute('tabIndex', 0);
+      photo.setAttribute('tabIndex', 1);
       photo.setAttribute('data-url', `${photo.src}`);
       figure.appendChild(photo);
       // media.setAttribute('tabindex', 0);
@@ -39,8 +39,9 @@ export default function mediasFactory(data) {
       video.classList.add('media');
       video.setAttribute('type', 'video/mp4');
       video.setAttribute('src', srcMedia);
+      video.setAttribute('aria-label', title);
       video.setAttribute('data-mediaid', id);
-      video.setAttribute('tabIndex', 0);
+      video.setAttribute('tabIndex', 1);
       video.setAttribute('alt', title + ', closeup view');
       video.setAttribute('role', 'link');
       video.setAttribute('data-url', `${video.src}`);
