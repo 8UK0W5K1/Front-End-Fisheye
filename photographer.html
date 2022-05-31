@@ -20,7 +20,11 @@
   <body>
     <header>
       <a href="index.html">
-        <img src="./assets/images/logo.png" class="logo" alt="FishEye Homepage"
+        <img
+          src="./assets/images/logo.png"
+          class="logo"
+          alt="FishEye Homepage"
+          aria-label="logo FishEye compagnie  "
       /></a>
     </header>
     <main id="main_photographer">
@@ -32,27 +36,22 @@
     </main>
     <nav>
       <label>Trier par</label>
-      <div
-        aria-label="tri des medias"
-        role="checkbox"
-        aria-checked="false"
-        class="select-box"
-      >
+      <div aria-label="tri des medias" role="checkbox" class="select-box">
         <div class="options-container">
           <hr />
-          <div tabindex="1" class="option">
+          <div tabindex="0" class="option">
             <input type="radio" class="radio" name="category" id="date" />
             <label for="date" class="optionsDropdown">Date</label>
           </div>
           <hr />
-          <div tabindex="1" class="option">
+          <div tabindex="0" class="option">
             <input type="radio" class="radio" name="category" id="titre" />
             <label for="titre" aria-label="Titre" class="optionsDropdown"
               >Titre</label
             >
           </div>
           <hr />
-          <div tabindex="1" class="option">
+          <div tabindex="0" class="option">
             <input type="radio" class="radio" name="category" id="popularite" />
             <label
               for="popularite"
@@ -66,7 +65,7 @@
       </div>
     </nav>
     <section id="photographer_gallery"></section>
-    <section tabindex="0" id="popup">
+    <section tabindex="1" id="popup">
       <div class="popup_text">
         <span class="likes_total"></span>
         <span class="price_per_day"></span>

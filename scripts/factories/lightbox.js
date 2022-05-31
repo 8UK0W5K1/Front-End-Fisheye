@@ -218,7 +218,7 @@ export default class Lightbox {
                 <div class="wrapper-content">
                 <div class="bground"></div>
                 <div class="wrapper-left">
-                  <button aria-label="bouton recule" class="previous modalLightbox" tabindex="0">
+                  <button aria-label="bouton précédent" class="previous modalLightbox" tabindex="0">
                     <i class="fas fa-solid fa-angle-left"></i>
                   </button>
                 </div>
@@ -226,7 +226,7 @@ export default class Lightbox {
                   
                 </div>
                 <div class="wrapper-right">
-                  <button aria-label="avance" class="next modalLightbox" tabindex="0">
+                  <button aria-label="bouton suivant" class="next modalLightbox" tabindex="0">
                     <i class="fas fa-solid fa-angle-right"></i>
                   </button>
                   <button aria-label="fermeture de la lightbox" class="close-lightbox modalLightbox" tabindex="0">

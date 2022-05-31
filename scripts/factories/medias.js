@@ -27,10 +27,10 @@ export default function mediasFactory(data) {
       photo.classList.add('media');
       photo.setAttribute('src', srcMedia);
       photo.setAttribute('data-mediaid', id);
+      photo.setAttribute('tabIndex', 1);
       photo.setAttribute('aria-label', title);
       photo.setAttribute('alt', title + ', closeup view');
       photo.setAttribute('role', 'link');
-      photo.setAttribute('tabIndex', 1);
       photo.setAttribute('data-url', `${photo.src}`);
       figure.appendChild(photo);
       // media.setAttribute('tabindex', 0);
@@ -52,6 +52,8 @@ export default function mediasFactory(data) {
 
     const likesCount = document.createElement('span');
     likesCount.classList.add('media_likes');
+    likesCount.setAttribute('tabIndex', 1);
+    likesCount.setAttribute('aria-label', `${likes} likes  `);
     likesCount.textContent = likes;
     figcaption.appendChild(likesCount);
 

@@ -52,13 +52,13 @@ async function displayMedias(medias) {
     if (e.key == 'Enter') {
       optionsContainer.classList.toggle('active');
       selectBox.setAttribute('aria-selected', true);
-      optionsList.forEach((option) => (option.tabIndex = 2));
+      optionsList.forEach((option) => (option.tabIndex = 0));
 
       selected.focus();
     } else if (e.keyCode == '39') {
       selectBox.setAttribute('aria-selected', true);
       optionsList.forEach((option) => {
-        option.tabIndex = 1;
+        option.tabIndex = 0;
         option.focus();
       });
     }
